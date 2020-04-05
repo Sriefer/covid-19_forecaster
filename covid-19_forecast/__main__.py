@@ -26,7 +26,7 @@ def main():
 
     # Print current time for comparison
     cur_time = datetime.datetime.utcnow()
-    cur_time_str = cur_time.strftime("%d/%m/%Y %H:%M:%S")
+    cur_time_str = cur_time.strftime("%m/%d/%Y %H:%M:%S")
     print('[+] Current time:\t {} UTC'.format(cur_time_str))
 
     # Read in data
@@ -47,15 +47,15 @@ def main():
     if infected[last_infected_day] > hit_val:
         print('[+] Already passed {:,} for infected'.format(hit_val))
     else:
-        date_hit = poly_regr.fit_data(infected, hit_val, degrees)
-        print('[+] Infect hits {:,} on {}'.format(hit_val, date_hit))
+        date_hit, predict_val = poly_regr.fit_data(infected, hit_val, degrees)
+        print('[+] Infection hits {:,} on {} at {:,}'.format(hit_val, date_hit, predict_val))
 
     hit_val = args.fatalities
     if fatalities[last_fatality_day] > hit_val:
         print('[+] Already passed {:,} for fatalities'.format(hit_val))
     else:
-        date_hit = poly_regr.fit_data(fatalities, hit_val, degrees)
-        print('[+] Fatalities hits {:,} on {}'.format(hit_val, date_hit))
+        date_hit, predict_val = poly_regr.fit_data(fatalities, hit_val, degrees)
+        print('[+] Fatalities hit {:,} on {} at {:,}'.format(hit_val, date_hit, predict_val))
 
 
 if __name__ == '__main__':

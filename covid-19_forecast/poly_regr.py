@@ -8,13 +8,13 @@ from sklearn.preprocessing import PolynomialFeatures
 
 def fit_data(data_dict, max_count, degrees=6):
     """
-    Get the lastest COVID-19 data from JHU
+    Try to fit the data to a polynomial of degrees and output when the max_count it reached
 
     :param dict data_dict: Dictionary containing dates and totals
-    :param max_count int: Maximum number to hit
-    :param degrees int: Nth degree of polynomial
-    :return  date that hit max_count
-    :rtype String
+    :param int max_count: Maximum number to reach
+    :param int degrees: Polynomial degree
+    :return  None
+    :rtype None
     """
 
     numpy.set_printoptions(suppress=True)
@@ -56,4 +56,4 @@ def fit_data(data_dict, max_count, degrees=6):
                   .format(max_days, predict(cur_index), date_hit))
             not_max = False
 
-    return date_hit
+    return date_hit, int(predict(cur_index))

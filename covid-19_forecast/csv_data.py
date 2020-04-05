@@ -49,9 +49,9 @@ def read_in_csv(file_name):
                     data_dates_sum[day] += int(row[index])
             line_count += 1
 
-    print('[+] First day found:\t {} with {}'.format(first_day, data_dates_sum[first_day]))
-    print('[+] Last day found:\t {} with {}'.format(last_day, data_dates_sum[last_day]))
-    print('[+] Processed {} entries'.format(line_count))
+    print('[+] First day found:\t {} with {:,}'.format(first_day, data_dates_sum[first_day]))
+    print('[+] Last day found:\t {} with {:,}'.format(last_day, data_dates_sum[last_day]))
+    print('[+] Processed {:,} entries'.format(line_count))
 
     return data_dates_sum
 

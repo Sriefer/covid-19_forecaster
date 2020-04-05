@@ -35,7 +35,7 @@ def get_data():
 
     last_commit = repo.iter_commits('master', max_count=1)
     last_commit_date = repo.head.commit.committed_date
-    last_commit_date_str = time.strftime("%d/%m/%Y %H:%M:%S %Z", time.gmtime(last_commit_date))
+    last_commit_date_str = time.strftime("%m/%d/%Y %H:%M:%S %Z", time.gmtime(last_commit_date))
     return last_commit_date_str
 
 
@@ -43,5 +43,5 @@ if __name__ == '__main__':
     time_str = get_data()
     print('[+] Last commit:\t {}'.format(time_str))
     cur_time = datetime.datetime.utcnow()
-    cur_time_str = cur_time.strftime("%d/%m/%Y %H:%M:%S")
+    cur_time_str = cur_time.strftime("%m/%d/%Y %H:%M:%S")
     print('[+] Current time:\t {} UTC'.format(cur_time_str))
