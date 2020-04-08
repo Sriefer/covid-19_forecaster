@@ -45,17 +45,17 @@ def main():
     degrees = args.degrees
     hit_val = args.infected
     if infected[last_infected_day] > hit_val:
-        print('[+] Already passed {:,} for infected'.format(hit_val))
+        print('[+] US already passed {:,} for infected'.format(hit_val))
     else:
         date_hit, predict_val = poly_regr.fit_data(infected, hit_val, degrees)
-        print('[+] Infection hits {:,} on {} at {:,}'.format(hit_val, date_hit, predict_val))
+        print('[+] US infection hits {:,} on {} at {:,}'.format(hit_val, date_hit, predict_val))
 
     hit_val = args.fatalities
     if fatalities[last_fatality_day] > hit_val:
-        print('[+] Already passed {:,} for fatalities'.format(hit_val))
+        print('[+] US already passed {:,} for fatalities'.format(hit_val))
     else:
         date_hit, predict_val = poly_regr.fit_data(fatalities, hit_val, degrees)
-        print('[+] Fatalities hit {:,} on {} at {:,}'.format(hit_val, date_hit, predict_val))
+        print('[+] US fatalities hit {:,} on {} at {:,}'.format(hit_val, date_hit, predict_val))
 
 
 if __name__ == '__main__':

@@ -46,6 +46,7 @@ def fit_data(data_dict, max_count, degrees=6):
     while(not_max):
         datetime_object += datetime.timedelta(days=1)
         date_hit = datetime_object.strftime('%m/%d/%y')
+        print('{} at {:,}'.format(date_hit, int(predict(cur_index))))
         if predict(cur_index) > max_count:
             not_max = False
         cur_index += 1
