@@ -23,7 +23,7 @@ def read_in_csv(file_name):
     # Get sum for each day
     data_dates = collections.OrderedDict()
     data_dates_sum = collections.OrderedDict()
-    with open(file_name) as csv_file:
+    with open(file_name, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         line_count = 0
         for row in csv_reader:
@@ -41,12 +41,20 @@ def read_in_csv(file_name):
                 last_day = next(reversed(data_dates.keys()))
                 line_count += 1
                 continue
+
             for day in data_dates.keys():
                 index = data_dates[day]
+
+                # 4/15/20 Updated added floats to daily values
+                try:
+                    tmp_val = int(row[index])
+                except ValueError:
+                    tmp_val = int(float(row[index]))
+
                 if day not in data_dates_sum.keys():
-                    data_dates_sum[day] = int(row[index])
+                    data_dates_sum[day] = tmp_val
                 else:
-                    data_dates_sum[day] += int(row[index])
+                    data_dates_sum[day] += tmp_val
             line_count += 1
 
     print('[+] First day found:\t {} with {:,}'.format(first_day, data_dates_sum[first_day]))
